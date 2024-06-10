@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 // React Router
 import { useParams } from 'react-router-dom';
@@ -6,12 +6,17 @@ import { useParams } from 'react-router-dom';
 // Components
 import Navbar from './Navbar';
 
+// Context
+import { PlayerContext } from '../context/PlayerContext';
+
 // Data
 import { albumsData, assets, songsData } from '../assets/assets';
 
 const DisplayAlbum = () => {
     const { id } = useParams();
     const albumData = albumsData[id];
+    const { playWithId } = useContext(PlayerContext);
+    
     return (
         <React.Fragment>
             <Navbar />
@@ -36,7 +41,7 @@ const DisplayAlbum = () => {
             <hr />
             {
                 songsData?.map((item, index) => (
-                    <div key={index} className='grid grid-cols-3 sm:grid-cols-4 gap-2 p-2 items-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer'>
+                    <div onClick={() => playWithId(item.id)} key={index} className='grid grid-cols-3 sm:grid-cols-4 gap-2 p-2 items-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer'>
                         <p className='text-white'>
                             <b className='mr-4 text-[#a7a7a7]'>{index + 1}</b>
                             <img className='inline w-10 mr-5' src={item.image} alt={item.name} />

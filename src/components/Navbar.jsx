@@ -1,20 +1,25 @@
 import React from 'react';
 
+// React Router
+import { useNavigate } from 'react-router-dom';
+
 // Images
-import { assets } from '../assets/assets'
+import { assets } from '../assets/assets';
 
 const Navbar = () => {
+    const Navigate = useNavigate();
+    
     return (
         <React.Fragment>
             <div className='w-full flex justify-between items-center font-semibold'>
                 <div className='flex items-center gap-2'>
-                    <img className='w-8 bg-black p-2 rounded-2xl cursor-pointer' src={assets.arrow_left} alt='ArrowLeft' />
-                    <img className='w-8 bg-black p-2 rounded-2xl cursor-pointer' src={assets.arrow_right} alt='ArrowRight' />
+                    <img onClick={() => Navigate(-1)} className='w-8 bg-black p-2 rounded-2xl cursor-pointer' src={assets.arrow_left} alt='ArrowLeft' />
+                    <img onClick={() => Navigate(1)} className='w-8 bg-black p-2 rounded-2xl cursor-pointer' src={assets.arrow_right} alt='ArrowRight' />
                 </div>
                 <div className='flex items-center gap-4'>
                     <p className='bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer'>Explore Premium</p>
                     <p className='bg-black text-[15px] px-3 py-1 rounded-2xl cursor-pointer'>Install App</p>
-                    <p className='bg-purple-500 text-black w-7 h-7 rounded-full flex items-center justify-center'>M</p>
+                    <p className='bg-purple-500 text-black w-7 h-7 rounded-full flex items-center justify-center cursor-pointer'>M</p>
                 </div>
             </div>
             <div className='flex items-center gap-2 mt-4'>

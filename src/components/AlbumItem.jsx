@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AlbumItem = ({ id, name, image, desc }) => {
     const Navigate = useNavigate();
+    
     return (
         <React.Fragment>
             <div onClick={()=> Navigate(`/album/${id}`)} className='min-w-[180px] p-2 px-3 rounded cursor-pointer hover:bg-[#ffffff26]'>
